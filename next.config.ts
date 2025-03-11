@@ -1,4 +1,4 @@
-import { variables } from "@app/sass/variables";
+import { variables } from "@src/sass/variables";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
     additionalData: variables,
   },
   images: {
-    domains: ["media.es.wired.com"],
+    domains: ["http2.mlstatic.com"],
   },
 };
 
