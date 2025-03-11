@@ -1,4 +1,4 @@
-import { ProductResponseDetail } from "@app/api/types";
+import { ProductResponseDetail } from "@src/app/api/types";
 import { NextRequest } from "next/server";
 
 export async function GET(

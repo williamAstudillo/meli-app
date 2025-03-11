@@ -1,4 +1,4 @@
-import ItemDetail from "@app/components/screens/ItemDetail/ItemDetail";
+import ItemDetail from "../../../components/screens/ItemDetail/ItemDetail";
 
 const ItemDetailPage = () => {
   return <ItemDetail />;

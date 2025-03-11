@@ -1,10 +1,10 @@
-import MainWrapper from "@app/components/templates/mainWrapper/MainWrapper";
+import MainWrapper from "@src/components/templates/mainWrapper/MainWrapper";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "@app/sass/global.sass";
+import "@src/sass/global.sass";
 
 const myFont = localFont({
-  src: "./font/proximanova_regular.ttf",
+  src: "../font/proximanova_regular.ttf",
   display: "swap",
   variable: "--font-my-font",
 });
