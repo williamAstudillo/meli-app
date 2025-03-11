@@ -1,4 +1,4 @@
-import Button from "@app/components/atoms/Button/Button";
+import Button from "../../atoms/Button/Button";
 import styles from "./ItemDetail.module.sass";
 import Image from "next/image";
 

@@ -1,5 +1,5 @@
-import Header from "@app/components/atoms/header/Header";
-import BreadCrumb from "@app/components/atoms/breadCrumb/BreadCrumb";
+import Header from "@src/components/atoms/header/Header";
+import BreadCrumb from "@src/components/atoms/breadCrumb/BreadCrumb";
 import styles from "./MainWrapper.module.sass";
 interface MainWrapperProps {
   children: React.ReactNode;

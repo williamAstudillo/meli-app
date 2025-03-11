@@ -1,7 +1,10 @@
+"use client";
 import Image from "next/image";
 import styles from "./Header.module.sass";
+import useStore from "@src/store/useStore";
 
 const Header = () => {
+  const { setQuery } = useStore();
   return (
     <header className={styles.header}>
       <Image
@@ -15,6 +18,7 @@ const Header = () => {
         type="text"
         placeholder="Nunca dejes de buscar"
         className={styles.header__input}
+        onChange={(e) => setQuery(e.target.value)}
       />
       <div className={styles.header__search}>
         <Image
