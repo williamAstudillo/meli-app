@@ -41,6 +41,7 @@ export async function GET(request: NextRequest) {
       picture: product.thumbnail,
       condition: product.condition,
       free_shipping: product.shipping.free_shipping,
+      categoryId: product.category_id,
     };
   });
 

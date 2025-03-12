@@ -10,6 +10,7 @@ export interface ProductResponse {
   currency_id: string;
   price: number;
   shipping: Shipping;
+  category_id: string;
 }
 export interface ProductResponseDetail extends ProductResponse {
   initial_quantity: number;
@@ -31,4 +32,12 @@ export interface Filter {
   name: string;
   type: string;
   values: FilterValue[];
+}
+
+interface category {
+  id: string;
+  name: string;
+}
+export interface CategoriesResponse {
+  path_from_root: category[];
 }

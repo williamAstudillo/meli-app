@@ -14,6 +14,7 @@ export async function GET(
         Authorization: `Bearer ${process.env.ACCESS_TOKEN}` || "",
       },
     });
+
     responseApiDescription = await fetch(
       process.env.API_MELI + `/items/${id}/description`,
       {
@@ -44,6 +45,7 @@ export async function GET(
     free_shipping: product.shipping.free_shipping,
     sold_quantity: product.initial_quantity,
     description: description.plain_text,
+    categoryId: product.category_id,
   };
 
   const responseApi = {
