@@ -6,6 +6,9 @@ export interface Product {
   picture: string;
   price: number;
   title: string;
+  description?: string;
+  sold_quantity?: number;
+  categoryId?: string;
 }
 
 export interface ProductData {

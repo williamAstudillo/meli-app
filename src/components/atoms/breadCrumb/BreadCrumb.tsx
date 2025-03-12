@@ -3,15 +3,20 @@ import Link from "next/link";
 import styles from "./BreadCrumb.module.sass";
 import useStore from "@src/store/useStore";
 
-const BreadCrumb = () => {
-  const { categories } = useStore();
+interface BreadCrumbProps {
+  categories: string[];
+}
+
+const BreadCrumb = ({ categories }: BreadCrumbProps) => {
+  const { categories: categoriesStore } = useStore();
+  const _categories = categories.length > 0 ? categories : categoriesStore;
   return (
     <nav className={styles.breadcrumb}>
       <ol className={styles.breadcrumb__list}>
-        {categories.map((category, index) => (
+        {_categories?.map((category, index) => (
           <li key={index} className={styles.breadcrumb__item}>
             <Link href="#">
-              {category + " " + (index === categories.length - 1 ? "" : " > ")}
+              {category + " " + (index === _categories.length - 1 ? "" : " > ")}
             </Link>
           </li>
         ))}

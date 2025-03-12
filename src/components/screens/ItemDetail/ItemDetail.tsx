@@ -1,27 +1,35 @@
+import { Product } from "@src/modules/domain/product";
 import Button from "../../atoms/Button/Button";
 import styles from "./ItemDetail.module.sass";
 import Image from "next/image";
+import formatPrice from "@src/utils/formatPrice";
 
-const ItemDetail = () => {
-  const URL =
-    "https://media.es.wired.com/photos/648c9a1ba566376ee967bf6a/master/pass/459293406";
+interface ItemDetailProps {
+  productDetail: Product | undefined;
+}
+const ItemDetail = ({ productDetail }: ItemDetailProps) => {
+  const { cents, integerPart } = formatPrice(productDetail?.price);
   return (
     <section className={styles.itemDetail}>
       <div className={styles.itemDetail__container}>
         <Image
-          src={URL}
+          src={productDetail?.picture || ""}
           alt=""
           width={500}
           height={500}
           className={styles.ItemDetail__image}
         />
         <div className={styles.itemDetail__info}>
-          <p className={styles.itemDetail__type}>Nuevo - 234 vendidos</p>
-          <h1 className={styles.itemDetail__title}>
-            Decoir reverse sombrero Oxford
-          </h1>
+          <p className={styles.itemDetail__type}>
+            {productDetail?.condition === "new"
+              ? "Nuevo"
+              : productDetail?.condition}{" "}
+            - {productDetail?.sold_quantity} vendidos
+          </p>
+          <h1 className={styles.itemDetail__title}>{productDetail?.title}</h1>
           <p className={styles.itemDetail__price}>
-            $ 1.980 <span className={styles.itemDetail__price_cens}>00</span>
+            ${integerPart}{" "}
+            <span className={styles.itemDetail__price_cens}>{cents}</span>
           </p>
           <Button text="Comprar" />
         </div>
@@ -31,10 +39,7 @@ const ItemDetail = () => {
           Descripción del producto
         </h2>
         <p className={styles.itemDetail__description_text}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
-          corrupti quae distinctio reiciendis eum praesentium consectetur ad ea
-          culpa laboriosam beatae aut officiis, alias tenetur. Ad veritatis
-          voluptas veniam doloremque!
+          {productDetail?.description}
         </p>
       </div>
     </section>

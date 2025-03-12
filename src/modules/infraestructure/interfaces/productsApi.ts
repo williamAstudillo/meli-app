@@ -16,10 +16,21 @@ interface Item {
   picture: string;
   condition: string;
   free_shipping: boolean;
+  categoryId: string;
 }
 
 export interface ApiResponse {
   author: Author;
   categories: { name: string }[];
   items: Item[];
+}
+
+export interface ItemDetail extends Item {
+  sold_quantity: number;
+  description: string;
+}
+
+export interface ApiResponseDetail {
+  author: Author;
+  item: ItemDetail;
 }

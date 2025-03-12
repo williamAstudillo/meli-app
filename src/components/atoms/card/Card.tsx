@@ -1,3 +1,4 @@
+import formatPrice from "@src/utils/formatPrice";
 import styles from "./Card.module.sass";
 import Image from "next/image";
 
@@ -5,10 +6,10 @@ interface CardProps {
   url: string;
   title: string;
   price: number;
-  city: string;
 }
 
-const Card = ({ url, title, price, city }: CardProps) => {
+const Card = ({ url, title, price }: CardProps) => {
+  const { integerPart } = formatPrice(price);
   return (
     <section className={styles.card}>
       <Image
@@ -20,11 +21,8 @@ const Card = ({ url, title, price, city }: CardProps) => {
       />
       <div className={styles.card__content}>
         <div className={styles.card__info}>
-          <p className={styles.card__price}>$ {price}</p>
+          <p className={styles.card__price}>$ {integerPart}</p>
           <h3 className={styles.card__title}>{title}</h3>
-        </div>
-        <div className={styles.card__city}>
-          <p>{city}</p>
         </div>
       </div>
       <div className={styles.card__divider} />
