@@ -7,11 +7,17 @@ const FavoritesPage = () => {
   const { favorites } = useGetFavorites();
   return (
     <>
-      <ol className={styles.favorites}>
-        {favorites?.map((product) => (
-          <Card key={product.id} product={product} />
-        ))}
-      </ol>
+      {favorites.length > 0 ? (
+        <ol className={styles.favorites}>
+          {favorites?.map((product) => (
+            <Card key={product.id} product={product} />
+          ))}
+        </ol>
+      ) : (
+        <section className={styles.favorites__container}>
+          <p className={styles.favorites__text}>No hay favoritos</p>
+        </section>
+      )}
     </>
   );
 };
