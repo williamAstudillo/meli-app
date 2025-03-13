@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "./Header.module.sass";
 import useStore from "@src/store/useStore";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Header = () => {
   const router = useRouter();
@@ -48,6 +49,11 @@ const Header = () => {
           />
         </div>
       </button>
+      <div className={styles.header__favorites}>
+        <Link href="/favorites">
+          <p>Favoritos</p>
+        </Link>
+      </div>
     </header>
   );
 };
