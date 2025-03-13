@@ -3,6 +3,7 @@ import Button from "../../atoms/Button/Button";
 import styles from "./ItemDetail.module.sass";
 import Image from "next/image";
 import formatPrice from "@src/utils/formatPrice";
+import FavoriteButton from "../../atoms/favoriteButton/FavoriteButton";
 
 interface ItemDetailProps {
   productDetail: Product | undefined;
@@ -20,12 +21,15 @@ const ItemDetail = ({ productDetail }: ItemDetailProps) => {
           className={styles.ItemDetail__image}
         />
         <div className={styles.itemDetail__info}>
-          <p className={styles.itemDetail__type}>
-            {productDetail?.condition === "new"
-              ? "Nuevo"
-              : productDetail?.condition}{" "}
-            - {productDetail?.sold_quantity} vendidos
-          </p>
+          <div className={styles.itemDetail__info__container}>
+            <p className={styles.itemDetail__type}>
+              {productDetail?.condition === "new"
+                ? "Nuevo"
+                : productDetail?.condition}{" "}
+              - {productDetail?.sold_quantity} vendidos
+            </p>
+            {productDetail && <FavoriteButton product={productDetail} />}
+          </div>
           <h1 className={styles.itemDetail__title}>{productDetail?.title}</h1>
           <p className={styles.itemDetail__price}>
             ${integerPart}{" "}

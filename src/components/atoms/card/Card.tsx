@@ -1,19 +1,20 @@
 import formatPrice from "@src/utils/formatPrice";
 import styles from "./Card.module.sass";
 import Image from "next/image";
+import Link from "next/link";
+import { Product } from "@src/modules/domain/product";
+import FavoriteButton from "@src/components/atoms/favoriteButton/FavoriteButton";
 
 interface CardProps {
-  url: string;
-  title: string;
-  price: number;
+  product: Product;
 }
 
-const Card = ({ url, title, price }: CardProps) => {
-  const { integerPart } = formatPrice(price);
+const Card = ({ product }: CardProps) => {
+  const { integerPart } = formatPrice(product.price);
   return (
-    <section className={styles.card}>
+    <li className={styles.card}>
       <Image
-        src={url}
+        src={product.picture}
         alt=""
         height="200"
         width="200"
@@ -22,11 +23,20 @@ const Card = ({ url, title, price }: CardProps) => {
       <div className={styles.card__content}>
         <div className={styles.card__info}>
           <p className={styles.card__price}>$ {integerPart}</p>
-          <h3 className={styles.card__title}>{title}</h3>
+          <Link
+            href={`/items/${product.id}`}
+            key={product.id}
+            className={styles.card__link}
+          >
+            <h3 className={styles.card__title}>{product.title}</h3>
+          </Link>
         </div>
       </div>
+      <div className={styles.card__icon}>
+        <FavoriteButton product={product} />
+      </div>
       <div className={styles.card__divider} />
-    </section>
+    </li>
   );
 };
 

@@ -41,3 +41,16 @@ interface category {
 export interface CategoriesResponse {
   path_from_root: category[];
 }
+
+export interface Product {
+  condition: string;
+  currency: string;
+  free_shipping: boolean;
+  id: string;
+  picture: string;
+  price: number;
+  title: string;
+  description?: string;
+  sold_quantity?: number;
+  categoryId?: string;
+}
