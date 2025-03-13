@@ -15,7 +15,7 @@ const Card = ({ product }: CardProps) => {
     <li className={styles.card}>
       <Image
         src={product.picture}
-        alt=""
+        alt="Imagen del producto"
         height="200"
         width="200"
         className={styles.card__image}
@@ -35,7 +35,7 @@ const Card = ({ product }: CardProps) => {
       <div className={styles.card__icon}>
         <FavoriteButton product={product} />
       </div>
-      <div className={styles.card__divider} />
+      <div className={styles.card__divider} aria-hidden="true" />
     </li>
   );
 };

@@ -15,7 +15,7 @@ const ItemDetail = ({ productDetail }: ItemDetailProps) => {
       <div className={styles.itemDetail__container}>
         <Image
           src={productDetail?.picture || ""}
-          alt=""
+          alt={productDetail?.title || "Imagen del producto"}
           width={500}
           height={500}
           className={styles.ItemDetail__image}

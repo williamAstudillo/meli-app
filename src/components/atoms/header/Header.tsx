@@ -12,13 +12,18 @@ const Header = () => {
   const [querySearch, setQuerySearch] = useState<string>("");
   const handleSearch = () => {
     setQuery(querySearch);
-    router.push(`/`);
+    if (querySearch === "") {
+      router.push("/");
+    } else {
+      router.push(`/items?search=${querySearch}`);
+    }
   };
   return (
     <header className={styles.header}>
       <button
         className={styles.header__button__icon}
         onClick={() => router.push("/")}
+        aria-label="Ir a pagina principal"
       >
         <Image
           src="/logo.png"
@@ -38,8 +43,13 @@ const Header = () => {
             handleSearch();
           }
         }}
+        aria-label="Barra de busqueda"
       />
-      <button className={styles.header__button} onClick={handleSearch}>
+      <button
+        className={styles.header__button}
+        onClick={handleSearch}
+        aria-label="Icono de busqueda"
+      >
         <div className={styles.header__search}>
           <Image
             src="/search.png"
