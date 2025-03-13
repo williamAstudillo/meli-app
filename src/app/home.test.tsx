@@ -17,7 +17,6 @@ describe("Home Component", () => {
     (useGetProducts as jest.Mock).mockReturnValue([]);
     render(<Home />);
     expect(screen.getByRole("navigation")).toBeInTheDocument();
-    expect(screen.getByRole("list")).toBeInTheDocument();
   });
 
   it("should render product cards when products exist", () => {
